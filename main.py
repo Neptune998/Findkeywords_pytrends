@@ -5,20 +5,22 @@ import os
 
 # create class
 class MyKeywordApp():
+
     def __init__(self):
 
         self.newWindow()
 
     def newWindow(self):
+
         # define your window
         root = Tk()
-        root.geometry("400x100")
+        root.geometry("600x200")
         root.resizable(False, False)
-        root.title("Keyword Application")
+        root.title("App using pytrends, tkinter")
 
-        # add logo image
-        p1 = PhotoImage(file='logo_image.png')
-        root.iconphoto(False, p1)
+        # logo image for application
+        logo = PhotoImage(file='logo_image.png')
+        root.iconphoto(False, logo)
 
         # add labels
         label1 = Label(text='Input a Keyword')
@@ -28,15 +30,19 @@ class MyKeywordApp():
         entry1 = Entry(root)
         canvas1.create_window(200, 20, window=entry1)
 
+        # Function to write in excel file.
         def excelWriter():
+
             # get the user-input variable
-            x1 = entry1.get()
+            user_input = entry1.get()
             canvas1.create_window(200, 210)
 
             # get our Google Trends data
             pytrend = TrendReq()
-            kws = pytrend.suggestions(keyword=x1)
-            df = pd.DataFrame(kws)
+            suggested_keywords = pytrend.suggestions(keyword=user_input)
+
+            # Dataframe
+            df = pd.DataFrame(suggested_keywords)
             df = df.drop(columns='mid')
 
             # create excel writer object
