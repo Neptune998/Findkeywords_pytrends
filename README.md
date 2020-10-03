@@ -7,9 +7,14 @@ and using that keyword it will search in pytrends and suggest you related keywor
 I hope you enjoy it.
 
 I would suggest you to activate a virtual environment using
+
 Ubuntu
+
 source venv/bin/activate
-then install libraries for that I add a requirements.py file to install all dependancies and libraries.
+
+
+Then install libraries for that I add a requirements.py file to install all dependancies and libraries.
+
 Just install 
 
 pip3 install -r requirements.py
